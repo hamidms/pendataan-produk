@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\AdminController;
 use App\Http\Middleware\RoleMiddleware;
 
 /*
@@ -22,23 +25,18 @@ Route::get('/', function () {
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'login'])->name('login.submit');
 
-// Contoh route untuk customer yang memerlukan login
 Route::group(['middleware' => ['role:customer']], function () {
-    // Tambahkan route halaman-halaman customer di sini
-    // Contoh:
-    Route::get('/customer/dashboard', 'CustomerController@dashboard')->name('customer.dashboard');
+    Route::get('/customer/dashboard',[CustomerController::class, 'dashboard'])->name('customer.dashboard');
+    Route::post('/customer/logout', [CustomerController::class, 'logout'])->name('customer.logout');
+
 });
 
-// Contoh route untuk staff yang memerlukan login
 Route::group(['middleware' => ['role:staff']], function () {
-    // Tambahkan route halaman-halaman staff di sini
-    // Contoh:
-    Route::get('/staff/dashboard', 'StaffController@dashboard')->name('staff.dashboard');
+    Route::get('/staff/dashboard', [StaffController::class, 'dashboard'])->name('staff.dashboard');
+    Route::post('/staff/logout', [StaffController::class, 'logout'])->name('staff.logout');
 });
 
-// Contoh route untuk admin yang memerlukan login
 Route::group(['middleware' => ['role:admin']], function () {
-    // Tambahkan route halaman-halaman admin di sini
-    // Contoh:
-    Route::get('/admin/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::post('/admin/logout',  [AdminController::class, 'logout'])->name('admin.logout');
 });
