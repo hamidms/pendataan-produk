@@ -19,24 +19,22 @@ use App\Http\Middleware\RoleMiddleware;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'login'])->name('login.submit');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout.submit');
 
 Route::group(['middleware' => ['role:customer']], function () {
     Route::get('/customer/dashboard',[CustomerController::class, 'dashboard'])->name('customer.dashboard');
-    Route::post('/customer/logout', [CustomerController::class, 'logout'])->name('customer.logout');
 
 });
 
 Route::group(['middleware' => ['role:staff']], function () {
     Route::get('/staff/dashboard', [StaffController::class, 'dashboard'])->name('staff.dashboard');
-    Route::post('/staff/logout', [StaffController::class, 'logout'])->name('staff.logout');
 });
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::post('/admin/logout',  [AdminController::class, 'logout'])->name('admin.logout');
 });

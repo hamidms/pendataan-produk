@@ -7,7 +7,7 @@
     <title>Pendataan | Dashboard</title>
 </head>
 <body>
-    <form action="{{ route('customer.logout') }}" method="POST">
+    <form action="{{ route('logout.submit') }}" method="POST">
         @csrf
         <button type="submit">Logout</button>
     </form>

@@ -29,15 +29,21 @@ class LoginController extends Controller
         }
     }
 
+    public function logout()
+    {
+        auth()->logout();
+        return redirect('/'); 
+    }
+
     protected function redirectTo()
     {
         $role = Auth::user()->role;
         if ($role === 'customer') {
-            return '/customer/dashboard';
+            return route('customer.dashboard');
         } elseif ($role === 'staff') {
-            return '/staff/dashboard';
+            return route('staff.dashboard');
         } elseif ($role === 'admin') {
-            return '/admin/dashboard';
+            return route('admin.dashboard');
         } else {
             return '/';
         }

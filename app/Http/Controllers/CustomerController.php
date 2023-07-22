@@ -10,10 +10,4 @@ class CustomerController extends Controller
     {
         return view('customer.dashboard');
     }
-
-    public function logout()
-    {
-        auth()->logout();
-        return redirect('/'); // Ganti dengan halaman beranda setelah logout
-    }
 }

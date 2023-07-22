@@ -10,10 +10,4 @@ class StaffController extends Controller
     {
         return view('staff.dashboard');
     }
-
-    public function logout()
-    {
-        auth()->logout();
-        return redirect('/'); // Ganti dengan halaman beranda setelah logout
-    }
 }

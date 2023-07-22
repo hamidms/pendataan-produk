@@ -10,10 +10,4 @@ class AdminController extends Controller
     {
         return view('admin.dashboard');
     }
-
-    public function logout()
-    {
-        auth()->logout();
-        return redirect('/'); // Ganti dengan halaman beranda setelah logout
-    }
 }
