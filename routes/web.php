@@ -33,6 +33,9 @@ Route::group(['middleware' => ['role:customer']], function () {
 
 Route::group(['middleware' => ['role:staff']], function () {
     Route::get('/staff/dashboard', [StaffController::class, 'dashboard'])->name('staff.dashboard');
+    Route::get('/customer',[CustomerController::class, 'read'])->name('customer.read');
+    Route::get('/customer/create',[CustomerController::class, 'create'])->name('customer.create');
+    Route::post('/customer/store',[CustomerController::class, 'store'])->name('customer.store');
 });
 
 Route::group(['middleware' => ['role:admin']], function () {
