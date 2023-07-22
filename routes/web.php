@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
+
 use App\Http\Middleware\RoleMiddleware;
 
 /*
@@ -41,3 +43,7 @@ Route::group(['middleware' => ['role:staff']], function () {
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 });
+
+Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+Route::post('/product', [ProductController::class, 'store'])->name('product.store');
