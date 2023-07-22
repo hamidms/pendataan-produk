@@ -21,6 +21,7 @@
             <th>Harga Beli</th>
             <th>Harga Jual</th>
             <th>Gambar Barang</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -39,10 +40,22 @@
                     N/A
                 @endif
             </td>
+            <td>
+                <a href="/product/{{ $product->id }}/edit">Edit</a>
+                <form method="POST" action="{{ route('product.destroy', $product->id) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" onclick="confirmDelete()">Hapus</button>
+                </form>
+            </td>
         </tr>
         @endforeach
     </tbody>
 </table>
-
+<script>
+    function confirmDelete() {
+        return confirm('Apakah Anda yakin ingin menghapus data barang ini?');
+    }
+</script>
 </body>
 </html>
