@@ -34,7 +34,7 @@ Aplikasi pendataan produk menggunakan Laravel untuk membuat proses create, read,
 * [✅] Staff dapat memasukan data pembeli pada aplikasi sehingga pembeli dapat masuk kedalam aplikasi
 * [✅] Staff dapat memasukkan, mengedit dan menghapus data barang
 * [✅] Admin dapat memasukkan, mengedit, menghapus data obat dan user 
-* [ ] Ketika pembeli selesai membeli barang maka staff memvalidasinya dan jika staff klik “submit” pada data penjualan maka stock barang akan berkurang.
+* [✅] Ketika pembeli selesai membeli barang maka staff memvalidasinya dan jika staff klik “submit” pada data penjualan maka stock barang akan berkurang.
 
 •	Menjalankan:
 
