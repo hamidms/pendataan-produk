@@ -30,7 +30,7 @@
 @if ($carts->isEmpty())
     <p>Keranjang kosong.</p>
 @else
-    <table>
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Nama Barang</th>
@@ -58,7 +58,7 @@
                         @csrf
                         @method('PUT')
                         <input type="number" name="quantity" value="{{ $cart->pivot->quantity }}" min="1">
-                        <button type="submit">Ubah</button>
+                        <button class="btn btn-outline-primary" type="submit">Ubah</button>
                     </form>
                 </td>
                 <td>{{ $cart ? $cart->sell_price : 'Produk Tidak Ditemukan' }}</td>
@@ -67,13 +67,14 @@
                     <form method="POST" action="{{ route('cart.remove', $cart->id) }}">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Hapus</button>
+                        <button class="btn btn-outline-danger" type="submit">Hapus</button>
                     </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+    <a href="/product" class="btn btn-outline-secondary">Kembali</a>
 @endif
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>

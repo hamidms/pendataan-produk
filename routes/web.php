@@ -67,6 +67,6 @@ Route::put('/cart/{cartId}', [CartController::class, 'updateQuantity'])->name('c
 Route::delete('/cart/{cartId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
 // Route::get('/sales/submit', [SalesController::class, 'submitForm'])->name('sales.submit');
-Route::post('/sales/submit', [SalesController::class, 'submitSales'])->name('sales.submit');
+Route::post('/sales/{cartId}/submit', [SalesController::class, 'submitSales'])->name('sales.submit');
 Route::get('/sales', [SalesController::class, 'submitForm'])->name('sales.index');
-Route::get('/sales/{userId}', [SalesController::class, 'submitForm'])->name('sales.index');
+// Route::get('/sales/{userId}', [SalesController::class, 'submitForm'])->name('sales.index');

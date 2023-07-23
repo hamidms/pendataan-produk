@@ -25,6 +25,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/product/stock">Stock</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sales">Penjualan</a>
+                    </li>
                 </ul>
               </div>
             @else

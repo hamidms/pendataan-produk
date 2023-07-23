@@ -46,7 +46,7 @@ class ProductController extends Controller
         // Simpan data ke database
         Product::create($data);
 
-        return redirect()->route('product.index')->with('success', 'Data barang berhasil ditambahkan.');
+        return redirect()->route('product.stock')->with('success', 'Data barang berhasil ditambahkan.');
     }
 
     public function edit($id)
