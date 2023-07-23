@@ -30,8 +30,32 @@
                     </li>
                 </ul>
               </div>
-            @else
-                
+            
+            @elseif ((Auth::user()->role == 'customer'))
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/cart">Keranjang</a>
+                    </li>
+                </ul>
+              </div>
+              @elseif ((Auth::user()->role == 'admin'))
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/customer">Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/product/stock">Stock</a>
+                    </li>
+                  </ul>
+                </div>
             @endif
             <form class="d-flex" action="{{ route('logout.submit') }}" method="POST">
                 <div class="btn">
