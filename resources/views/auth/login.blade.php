@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="css/style.css">
     <title>Pendataan | Login</title>
 </head>
 <body>
     <div  class="position-absolute top-50 start-50 translate-middle">
-
-        <div class="card" style="width: 18rem;">
+        <div class="m-3">
+            <img src="/img/pendataan.png" alt="logo" width="250">
+        </div>
+        <div class="card shadow" style="width: 18rem;">
             <div class="card-body">
                 <form method="POST" action="{{ route('login.submit') }}">
                     @csrf
@@ -24,8 +26,10 @@
                         <label for="password" class="form-label">Password</label>
                         <input type="password" name="password" id="password" class="form-control" required>
                     </div>
-                
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
                 </form>
             </div>
         </div>
