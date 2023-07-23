@@ -13,6 +13,12 @@ class ProductController extends Controller
         return view('product.index', compact('products'));
     }
 
+    public function stock()
+    {
+        $products = Product::all();
+        return view('product.stock', compact('products'));
+    }
+
     public function create()
     {
         return view('product.create');
@@ -72,7 +78,7 @@ class ProductController extends Controller
 
         $product->update($data);
 
-        return redirect()->route('product.index')->with('success', 'Data barang berhasil diperbarui.');
+        return redirect()->route('product.stock')->with('success', 'Data barang berhasil diperbarui.');
     }
 
     public function destroy($id)
@@ -80,7 +86,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return redirect()->route('product.index')->with('success', 'Data barang berhasil dihapus.');
+        return redirect()->route('product.stock')->with('success', 'Data barang berhasil dihapus.');
     }
 }
 
