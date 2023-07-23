@@ -26,6 +26,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/home', function () {
+    return redirect()->route('product.index');
+});
+
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'login'])->name('login.submit');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout.submit');
@@ -38,8 +42,11 @@ Route::group(['middleware' => ['role:customer']], function () {
 Route::group(['middleware' => ['role:staff']], function () {
     Route::get('/staff/dashboard', [StaffController::class, 'dashboard'])->name('staff.dashboard');
     Route::get('/customer',[CustomerController::class, 'read'])->name('customer.read');
+    Route::get('/customer/{id}/edit',[CustomerController::class, 'edit'])->name('customer.edit');
+    Route::put('/customer/{id}/update',[CustomerController::class, 'update'])->name('customer.update');
     Route::get('/customer/create',[CustomerController::class, 'create'])->name('customer.create');
     Route::post('/customer/store',[CustomerController::class, 'store'])->name('customer.store');
+    Route::delete('/customer/{id}/destroy',[CustomerController::class, 'destroy'])->name('customer.destroy');
 });
 
 Route::group(['middleware' => ['role:admin']], function () {

@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar bg-body-tertiary">
         <div class="container">
-            <a class="navbar-brand">
+            <a class="navbar-brand" href="/product">
             <img src="/img/Pendataan_gr.png" alt="Pendataan" width="100">
             </a>
             <form class="d-flex" action="{{ route('logout.submit') }}" method="POST">

@@ -51,4 +51,41 @@ class CustomerController extends Controller
 
         return redirect()->route('customer.read')->with('success', 'Data user berhasil ditambahkan.');
     }
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        return view('customer.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $data = $request->validate([
+            'name' => 'required|string',
+            'ttl' => 'required|string',
+            'gender' => 'required|in:Pria,Wanita',
+            'address' => 'required|string',
+            'ktp_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'role' => 'required',
+        ]);
+
+        if ($request->hasFile('ktp_photo')) {
+            $ktpPhotoPath = $request->file('ktp_photo')->store('ktp_photos', 'public');
+            $data['ktp_photo'] = $ktpPhotoPath;
+        }
+
+        $user->update($data);
+
+        return redirect()->route('customer.read')->with('success', 'User berhasil diperbarui.');
+    }
+
+    public function destroy($id) {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('customer.read')->with('success', 'Data user berhasil dihapus.');
+    }
+
 }
